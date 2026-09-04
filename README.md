@@ -4,7 +4,7 @@ infinite integers in one C++ header with zero dependencies.
 
 --- 
 
-A high-efficiency, high-precision infinite-integer arithmetic library. Drop `inf.hpp` into any C++17 project — no GMP, no Boost, no build step.
+A high-efficiency, high-precision infinite-integer arithmetic library. Drop `inf.hpp` into any C++17 project.
 
 ```cpp
 #include "inf.hpp"
@@ -31,3 +31,8 @@ Schoolbook → Karatsuba → NTT → Schönhage–Strassen, Knuth Algorithm D, L
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Acknowledgement
+**inf.cpp** is neither affiliated nor does it fork the below-mentioned projects, but I acknowledge their precedence and influence:
+- [Boost](https://www.boost.org/)
+- [GMP](https://gmplib.org/)
