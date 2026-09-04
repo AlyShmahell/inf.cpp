@@ -1,1 +1,11 @@
 .ipynb_checkpoints
+*.o
+*.obj
+*.exe
+*.out
+a.out
+tests/unit
+tests/rsa
+.DS_Store
+*~
+*.swp

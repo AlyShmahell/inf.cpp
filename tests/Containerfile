@@ -1,0 +1,13 @@
+FROM alpine:3.21 AS build
+RUN apk add --no-cache g++ make
+WORKDIR /src
+COPY inf.hpp /src/inf.hpp
+COPY tests /src/tests
+WORKDIR /src/tests
+RUN make compile CXXFLAGS="-std=c++17 -O2 -Wall -Wextra -static"
+
+FROM alpine:3.21
+WORKDIR /tests
+COPY --from=build /src/tests/unit /src/tests/rsa /src/tests/run ./
+RUN chmod +x run unit rsa
+ENTRYPOINT ["./run"]

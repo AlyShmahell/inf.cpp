@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+cd "$root"
+
+if command -v podman >/dev/null 2>&1; then
+    compose="podman compose"
+elif command -v docker >/dev/null 2>&1; then
+    compose="docker compose"
+else
+    echo "need podman or docker" >&2
+    exit 1
+fi
+
+yaml=tests/compose.yaml
+
+$compose -p inf-cpp -f "$yaml" down --remove-orphans --volumes || true
+$compose -p inf-cpp -f "$yaml" build
+exec $compose -p inf-cpp -f "$yaml" up --abort-on-container-exit --exit-code-from tests

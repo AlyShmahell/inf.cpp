@@ -1,0 +1,9 @@
+name: inf-cpp
+
+services:
+  tests:
+    container_name: inf-tests
+    build:
+      context: ..
+      dockerfile: tests/Containerfile
+    stop_grace_period: 30m
